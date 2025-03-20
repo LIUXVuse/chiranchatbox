@@ -1,0 +1,26 @@
+name = "chiran-nursing-chatbot"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# KV命名空間，用於存儲護理知識庫
+[[kv_namespaces]]
+binding = "NURSING_KNOWLEDGE"
+id = "4303fd77b4754fd2aa994ec132087533"
+preview_id = "53f0fc23f85c418e9fa2f5cba659fddf"
+
+# 環境變數
+[vars]
+ENVIRONMENT = "production"
+LINE_CHANNEL_ID = "2007095015"
+LINE_CHANNEL_SECRET = "796731e5d5247207440b4fc9c42a4061"
+LINE_CHANNEL_ACCESS_TOKEN = "2E4wgtiIP6NTRKK8NBEaK7GkoFKA0S9gE7U+vmTdpP3YwZmBS3mjhmNucPiDavfreF1vhtods8n0Brj4S9UnZDV/eHph9xZxn1N3VZ4RIIqLQyid15d6aQvqfpEt8B465JRPiloViOgDZFKNTWGUBAdB04t89/1O/w1cDnyilFU="
+
+# 開發環境配置
+[env.dev]
+vars = { ENVIRONMENT = "development" }
+
+# 生產環境配置
+[env.production]
+vars = { ENVIRONMENT = "production" }
+route = { pattern = "YOUR_DOMAIN", custom_domain = true } 
