@@ -185,13 +185,16 @@ async function getKeywordIndex() {
  */
 function findMatchingEntryId(query, keywordIndex) {
   // 將查詢轉為小寫以進行不區分大小寫的匹配
-  const lowerQuery = query.toLowerCase();
+  const lowerQuery = query.toLowerCase().trim();
   
   // 先檢查是否精確匹配部門查詢
   // 例如用戶直接輸入 "ICU" 或 "ED"
-  if (keywordIndex[lowerQuery] && keywordIndex[lowerQuery].startsWith('Department:')) {
-    // 返回部門標記，讓getResponse函數知道這是部門查詢
-    return keywordIndex[lowerQuery];
+  const departmentMatch = Object.entries(keywordIndex).find(([key, value]) => 
+    key.toLowerCase() === lowerQuery && value.startsWith('Department:')
+  );
+  
+  if (departmentMatch) {
+    return departmentMatch[1];  // 返回部門標記
   }
   
   // 檢查每個關鍵詞是否包含在查詢中
